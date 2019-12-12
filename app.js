@@ -18,9 +18,13 @@ var campgroundRoutes 	= require("./routes/campgrounds.js");
 
 console.log(process.env.DATABASEURL);
 
+//Sets the environment variable to localhost in case DATABASEURL is null
+//preventing the app from crashing
+var url = process.env.DATABASEURL || "mongodb://localhost:27017/yelp_campDB_v10"
+
 mongoose.set("useUnifiedTopology", true);
 
- mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
+ mongoose.connect(url, {useNewUrlParser: true});
 
 // mongoose.connect("mongodb+srv://17BC:BlueNoteJam@cluster0-dodsm.mongodb.net/test?retryWrites=true&w=majority", {
 // 	useNewUrlParser: true,
