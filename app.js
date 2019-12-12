@@ -16,9 +16,11 @@ var campgroundRoutes 	= require("./routes/campgrounds.js");
 	commentRoutes		= require("./routes/comments.js");
 	indexRoutes			= require("./routes/index.js");
 
+console.log(process.env.DATABASEURL);
+
 mongoose.set("useUnifiedTopology", true);
 
-// mongoose.connect("mongodb://localhost:27017/yelp_campDB_v10", {useNewUrlParser: true});
+ mongoose.connect(process.env.DATABASEURL, {useNewUrlParser: true});
 
 // mongoose.connect("mongodb+srv://17BC:BlueNoteJam@cluster0-dodsm.mongodb.net/test?retryWrites=true&w=majority", {
 // 	useNewUrlParser: true,
@@ -29,8 +31,8 @@ mongoose.set("useUnifiedTopology", true);
 // 	console.log("ERROR", err.message);
 // });
 
-mongoose.connect("mongodb+srv://17BC:BlueNoteJam@cluster0-dodsm.mongodb.net/test?retryWrites=true&w=majority", {
-	useNewUrlParser: true});
+// mongoose.connect("mongodb+srv://17BC:BlueNoteJam@cluster0-dodsm.mongodb.net/test?retryWrites=true&w=majority", {
+// 	useNewUrlParser: true});
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
